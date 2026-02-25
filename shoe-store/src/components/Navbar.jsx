@@ -1,10 +1,36 @@
 import { Link } from "react-router-dom"
-import logo from "../assets/Cyman Wears (5).png"   // adjust path as needed
+import { useState, useEffect } from "react"
+import logo from "../assets/Cyman Wears (5).png"
 
 export default function Navbar() {
+  const [hidden, setHidden] = useState(false)
+  const [lastScroll, setLastScroll] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const current = window.scrollY
+
+      if (current > lastScroll && current > 80) {
+        setHidden(true)   // hide on scroll down
+      } else {
+        setHidden(false)  // show on scroll up
+      }
+
+      setLastScroll(current)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [lastScroll])
+
   return (
-    <nav className="bg-gray-900 text-white px-6 py-4 flex justify-between items-center">
-      
+    <nav
+      className={`
+        bg-gray-900 text-white px-6 py-4 flex justify-between items-center
+        fixed top-0 left-0 w-full z-50 transition-transform duration-300
+        ${hidden ? "-translate-y-full" : "translate-y-0"}
+      `}
+    >
       <Link to="/" className="flex items-center gap-3">
         <img 
           src={logo} 

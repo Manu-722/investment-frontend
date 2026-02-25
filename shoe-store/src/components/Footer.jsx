@@ -2,8 +2,10 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white pt-12 pb-8 px-6">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-x-10">
+    <footer className="bg-black text-white w-full m-0 p-0">
+      
+      {/* Main Footer Content */}
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-y-12 md:gap-x-10 px-6 py-12">
 
         {/* 📝 About Us */}
         <div className="md:text-left text-center">
@@ -40,12 +42,14 @@ const Footer = () => {
             </a>
           </div>
         </div>
+
       </div>
 
-      {/* 🧾 Bottom Line */}
-      <div className="mt-12 text-center text-sm text-gray-400">
+      {/* Bottom Line */}
+      <div className="text-center text-sm text-gray-400 py-4">
         © {new Date().getFullYear()} Cyman Wear. All rights reserved.
       </div>
+
     </footer>
   );
 };
